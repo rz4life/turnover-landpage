@@ -5,8 +5,9 @@
 Your landing page is now **100% standalone** - no separate backend deployment needed!
 
 ### Key Changes:
+
 1. ✅ Created `api/waitlist.js` - Serverless function (replaces backend)
-2. ✅ Updated `Waitlist.js` - Now calls `/api/waitlist` 
+2. ✅ Updated `Waitlist.js` - Now calls `/api/waitlist`
 3. ✅ Added `nodemailer` + `mongodb` packages
 4. ✅ Updated `.env` with email/database credentials
 5. ✅ Created `vercel.json` - Deployment configuration
@@ -18,6 +19,7 @@ Your landing page is now **100% standalone** - no separate backend deployment ne
 ## 🚀 Deploy in 5 Minutes
 
 ### Step 1: Push to GitHub
+
 ```bash
 git add .
 git commit -m "Serverless landing page ready"
@@ -25,6 +27,7 @@ git push
 ```
 
 ### Step 2: Import to Vercel
+
 1. Go to **https://vercel.com**
 2. Click **"Import Project"**
 3. Select your GitHub repository
@@ -32,9 +35,11 @@ git push
 5. Click **"Deploy"**
 
 ### Step 3: Add Environment Variables
+
 **IMPORTANT:** Go to Vercel Dashboard → Settings → Environment Variables
 
 Add these:
+
 ```
 EMAIL_USER=razaqalagbada@gmail.com
 EMAIL_PASSWORD=aqbln yrrh xszh jlb
@@ -44,6 +49,7 @@ DB_NAME=turnover
 ```
 
 ### Step 4: Redeploy
+
 Click **"Redeploy"** in Vercel dashboard (after adding variables)
 
 ### ✅ DONE! Your site is live!
@@ -76,6 +82,7 @@ vercel dev
 ## 🎯 What This Means
 
 **Before:**
+
 - ❌ Deploy frontend (Vercel)
 - ❌ Deploy backend (Heroku/Railway)
 - ❌ Manage 2 servers
@@ -83,6 +90,7 @@ vercel dev
 - ❌ More cost
 
 **After:**
+
 - ✅ Deploy ONE repository
 - ✅ Serverless backend included
 - ✅ Zero server management
