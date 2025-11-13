@@ -101,7 +101,8 @@ module.exports = async (req, res) => {
 
         // Email to owner
         await transporter.sendMail({
-          from: process.env.EMAIL_USER,
+          from: `"Turnover Manager" <${process.env.EMAIL_USER}>`,
+          replyTo: process.env.OWNER_EMAIL || process.env.EMAIL_USER,
           to: process.env.OWNER_EMAIL || process.env.EMAIL_USER,
           subject: `🎯 New Waitlist Signup - ${email}`,
           html: `
@@ -152,7 +153,8 @@ module.exports = async (req, res) => {
 
         // Confirmation email to user
         await transporter.sendMail({
-          from: process.env.EMAIL_USER,
+          from: `"Turnover Manager Support" <${process.env.EMAIL_USER}>`,
+          replyTo: process.env.OWNER_EMAIL || process.env.EMAIL_USER,
           to: email,
           subject: '🚀 Welcome to the Turnover Manager Waitlist!',
           html: `
