@@ -14,6 +14,11 @@ const corsHeaders = {
 };
 
 module.exports = async (req, res) => {
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  
   // Handle CORS preflight
   if (req.method === 'OPTIONS') {
     return res.status(200).json({ success: true });
@@ -153,7 +158,7 @@ module.exports = async (req, res) => {
 
         // Confirmation email to user
         await transporter.sendMail({
-          from: `"Turnover Manager Support" <${process.env.EMAIL_USER}>`,
+          from: `"Turnover Manager" <contact@turnover-manager.com>`,
           replyTo: process.env.OWNER_EMAIL || process.env.EMAIL_USER,
           to: email,
           subject: '🚀 Welcome to the Turnover Manager Waitlist!',

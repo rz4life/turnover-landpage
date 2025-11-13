@@ -5,11 +5,13 @@
 Your landing page is now **100% STANDALONE** - no separate backend server needed!
 
 ### Before:
+
 - ❌ Needed to deploy 2 repos (frontend + backend)
 - ❌ Required separate server running 24/7
 - ❌ More complex deployment process
 
 ### After:
+
 - ✅ Only deploy 1 repo (landing-page)
 - ✅ Serverless function handles waitlist
 - ✅ Emails sent automatically
@@ -21,9 +23,11 @@ Your landing page is now **100% STANDALONE** - no separate backend server needed
 ## 📁 New Files Created
 
 ### 1. `api/waitlist.js` (Serverless Function)
+
 This is a **Vercel Serverless Function** that runs when someone submits the waitlist form.
 
 **What it does:**
+
 - ✅ Validates email and form data
 - ✅ Saves to MongoDB (if configured)
 - ✅ Sends email to you (owner notification)
@@ -31,14 +35,17 @@ This is a **Vercel Serverless Function** that runs when someone submits the wait
 - ✅ Prevents duplicate signups
 
 **How it works:**
+
 - URL: `https://your-domain.com/api/waitlist`
 - Vercel automatically runs this when called
 - No server needed - it's serverless!
 
 ### 2. `vercel.json` (Vercel Configuration)
+
 Tells Vercel how to deploy your app with serverless functions.
 
 ### 3. Updated Files:
+
 - ✅ `package.json` - Added nodemailer & mongodb
 - ✅ `src/pages/Waitlist.js` - Now calls `/api/waitlist` instead of external backend
 - ✅ `.env` - Updated with email/database credentials
@@ -48,6 +55,7 @@ Tells Vercel how to deploy your app with serverless functions.
 ## 🚀 Deploy to Vercel (5 Minutes)
 
 ### Step 1: Push to GitHub
+
 ```bash
 cd landing-page
 git add .
@@ -56,6 +64,7 @@ git push
 ```
 
 ### Step 2: Connect to Vercel
+
 1. Go to https://vercel.com
 2. Click **"Import Project"**
 3. Select your `landing-page` repository
@@ -63,6 +72,7 @@ git push
 5. Click **"Deploy"**
 
 ### Step 3: Add Environment Variables in Vercel
+
 **IMPORTANT:** Add these in Vercel Dashboard → Settings → Environment Variables
 
 ```
@@ -74,6 +84,7 @@ DB_NAME=turnover
 ```
 
 ### Step 4: Redeploy
+
 After adding environment variables, click **"Redeploy"** in Vercel dashboard.
 
 ### ✅ Done! Your site is live with working waitlist!
@@ -85,11 +96,13 @@ After adding environment variables, click **"Redeploy"** in Vercel dashboard.
 ### Email Settings (REQUIRED for emails to work)
 
 **EMAIL_USER** - Your Gmail address
+
 ```
 razaqalagbada@gmail.com
 ```
 
 **EMAIL_PASSWORD** - Your Gmail App Password
+
 ```
 How to get:
 1. Go to Google Account → Security
@@ -100,6 +113,7 @@ How to get:
 ```
 
 **OWNER_EMAIL** - Where notifications go
+
 ```
 razaqalagbada@gmail.com
 ```
@@ -107,6 +121,7 @@ razaqalagbada@gmail.com
 ### Database Settings (OPTIONAL - for saving leads)
 
 **MONGODB_URI** - Your MongoDB connection string
+
 ```
 Get free MongoDB:
 1. Go to https://www.mongodb.com/cloud/atlas
@@ -117,11 +132,13 @@ Get free MongoDB:
 ```
 
 **DB_NAME** - Database name
+
 ```
 turnover
 ```
 
 **Note:** If you don't add MongoDB variables, the system will:
+
 - ✅ Still send emails
 - ❌ Won't save to database
 - ✅ Still works fine!
@@ -131,6 +148,7 @@ turnover
 ## 🧪 Testing Locally
 
 ### Test with Vercel CLI (Recommended)
+
 ```bash
 # Install Vercel CLI
 npm i -g vercel
@@ -144,6 +162,7 @@ vercel dev
 ```
 
 ### Test with npm start (Frontend Only)
+
 ```bash
 npm start
 # Note: API calls will fail since serverless function won't run
@@ -155,6 +174,7 @@ npm start
 ## 📊 How It Works
 
 ### User Flow:
+
 1. User visits `https://your-domain.com/waitlist`
 2. User fills out form (email, radio buttons, message)
 3. User clicks "Join Waitlist"
@@ -168,6 +188,7 @@ npm start
 6. User sees success message with confetti 🎉
 
 ### Behind the Scenes:
+
 ```
 Frontend (React)
     ↓
@@ -187,19 +208,21 @@ Success response back to frontend
 ✅ **Email Validation** - Checks valid email format  
 ✅ **Duplicate Prevention** - Checks MongoDB for existing email  
 ✅ **Error Handling** - Graceful failures if email/DB unavailable  
-✅ **Environment Variables** - Credentials never in code  
+✅ **Environment Variables** - Credentials never in code
 
 ---
 
 ## 💡 Vercel Serverless Functions - Free Tier
 
 **What you get for FREE:**
+
 - ✅ 100,000 function invocations/month
 - ✅ 100 GB-hours compute time
 - ✅ Automatic scaling
 - ✅ Global edge network
 
 **For waitlist, this means:**
+
 - ✅ ~3,000 signups/day FREE
 - ✅ More than enough for early launch!
 
@@ -224,32 +247,41 @@ Before going live, make sure:
 ## 🐛 Troubleshooting
 
 ### Waitlist form submits but no email received
+
 **Fix:** Check Vercel deployment logs for errors
+
 ```
 Vercel Dashboard → Deployments → Click latest → Functions
 Check /api/waitlist logs for errors
 ```
 
 Common issues:
+
 - ❌ EMAIL_PASSWORD wrong - Generate new app password
 - ❌ 2FA not enabled - Enable 2FA in Google Account
 - ❌ Environment variables not set - Add in Vercel dashboard
 
 ### "Internal Server Error" on form submit
+
 **Fix:** Missing environment variables
+
 ```
 Go to Vercel Dashboard → Settings → Environment Variables
 Add all required variables, then redeploy
 ```
 
 ### MongoDB connection fails
+
 **Fix:** Check connection string
+
 - ✅ Replace `<password>` with actual password
 - ✅ Whitelist all IPs: `0.0.0.0/0` in MongoDB Atlas
 - ✅ Make sure cluster is running
 
 ### Form works locally but not on Vercel
+
 **Fix:** Environment variables
+
 ```
 Local .env file is NOT used in production
 Must add variables in Vercel dashboard
@@ -260,21 +292,25 @@ Must add variables in Vercel dashboard
 ## 🎉 Next Steps
 
 1. **Test locally:**
+
    ```bash
    vercel dev
    ```
 
 2. **Deploy to Vercel:**
+
    ```bash
    vercel --prod
    ```
 
 3. **Test production:**
+
    - Visit your Vercel URL
    - Submit waitlist form
    - Check your email inbox
 
 4. **Connect custom domain:**
+
    - Add `turnover-manager.com` in Vercel
    - Update DNS records
 
@@ -297,6 +333,7 @@ Must add variables in Vercel dashboard
 ## 💬 Questions?
 
 Your landing page is now:
+
 - ✅ Standalone (no separate backend needed)
 - ✅ Serverless (scales automatically)
 - ✅ Free to host (Vercel free tier)

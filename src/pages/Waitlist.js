@@ -53,7 +53,11 @@ const Waitlist = () => {
       }
     } catch (err) {
       console.error('Waitlist submission error:', err);
-      setError('Network error. Please check your connection and try again.');
+      if (err.message && err.message.includes('Failed to execute')) {
+        setError('API endpoint not available. Please run with "npm run dev" (Vercel CLI) instead of "npm start" to test the waitlist feature.');
+      } else {
+        setError('Network error. Please check your connection and try again.');
+      }
     } finally {
       setIsSubmitting(false);
     }

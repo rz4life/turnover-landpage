@@ -84,23 +84,23 @@ landing-page/
 
 ## 🆕 New Files (Serverless Conversion)
 
-| File | Purpose |
-|------|---------|
-| `api/waitlist.js` | Serverless function - replaces entire backend! |
-| `vercel.json` | Vercel deployment configuration |
-| `SERVERLESS_SETUP.md` | Complete serverless guide (400+ lines) |
-| `READY_TO_DEPLOY.md` | Quick deployment checklist |
-| `CHANGES.md` | Summary of changes made |
-| `deploy.sh` | Interactive deployment script |
+| File                  | Purpose                                        |
+| --------------------- | ---------------------------------------------- |
+| `api/waitlist.js`     | Serverless function - replaces entire backend! |
+| `vercel.json`         | Vercel deployment configuration                |
+| `SERVERLESS_SETUP.md` | Complete serverless guide (400+ lines)         |
+| `READY_TO_DEPLOY.md`  | Quick deployment checklist                     |
+| `CHANGES.md`          | Summary of changes made                        |
+| `deploy.sh`           | Interactive deployment script                  |
 
 ## ✏️ Modified Files
 
-| File | What Changed |
-|------|--------------|
-| `package.json` | Added `nodemailer` + `mongodb` packages |
+| File                    | What Changed                                          |
+| ----------------------- | ----------------------------------------------------- |
+| `package.json`          | Added `nodemailer` + `mongodb` packages               |
 | `src/pages/Waitlist.js` | Changed API endpoint from external to `/api/waitlist` |
-| `.env` | Updated with email/MongoDB credentials |
-| `README.md` | Added serverless quick start guide |
+| `.env`                  | Updated with email/MongoDB credentials                |
+| `README.md`             | Added serverless quick start guide                    |
 
 ## 📊 Statistics
 
@@ -135,18 +135,19 @@ git push  # Auto-deploys via Vercel
 
 ## 💰 Cost Breakdown
 
-| Service | Tier | Monthly Cost |
-|---------|------|--------------|
-| Vercel (Frontend + Serverless) | FREE | $0 |
-| MongoDB Atlas | FREE (M0) | $0 |
-| Gmail SMTP | FREE | $0 |
-| **Total** | | **$0** |
+| Service                        | Tier      | Monthly Cost |
+| ------------------------------ | --------- | ------------ |
+| Vercel (Frontend + Serverless) | FREE      | $0           |
+| MongoDB Atlas                  | FREE (M0) | $0           |
+| Gmail SMTP                     | FREE      | $0           |
+| **Total**                      |           | **$0**       |
 
 **Handles ~3,000 signups/day on free tier!**
 
 ## 🎯 Next Steps
 
 1. **Push to GitHub**
+
    ```bash
    git add .
    git commit -m "Serverless landing page ready"
@@ -154,6 +155,7 @@ git push  # Auto-deploys via Vercel
    ```
 
 2. **Deploy to Vercel**
+
    - Import GitHub repo
    - Add environment variables
    - Deploy!

@@ -279,18 +279,18 @@ const CTASection = () => {
             </div>
             
             <div className="flex gap-6 text-gray-400">
-              <a href="#" className="hover:text-white transition-colors">
+              <button className="hover:text-white transition-colors" aria-label="Twitter">
                 <i className="fab fa-twitter text-2xl"></i>
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
+              </button>
+              <button className="hover:text-white transition-colors" aria-label="Facebook">
                 <i className="fab fa-facebook text-2xl"></i>
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
+              </button>
+              <button className="hover:text-white transition-colors" aria-label="Instagram">
                 <i className="fab fa-instagram text-2xl"></i>
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
+              </button>
+              <button className="hover:text-white transition-colors" aria-label="LinkedIn">
                 <i className="fab fa-linkedin text-2xl"></i>
-              </a>
+              </button>
             </div>
           </div>
           
