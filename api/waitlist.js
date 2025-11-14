@@ -94,15 +94,28 @@ module.exports = async (req, res) => {
 
     // STEP 2: Send Emails
     let emailSent = false;
+    let emailError = null;
+    
+    // Debug logging
+    console.log('🔍 Email Config Check:');
+    console.log('EMAIL_USER exists:', !!process.env.EMAIL_USER);
+    console.log('EMAIL_PASSWORD exists:', !!process.env.EMAIL_PASSWORD);
+    console.log('EMAIL_USER value:', process.env.EMAIL_USER);
+    
     if (process.env.EMAIL_USER && process.env.EMAIL_PASSWORD) {
       try {
+        // Remove spaces from password (common issue with Gmail app passwords)
+        const cleanPassword = process.env.EMAIL_PASSWORD.replace(/\s+/g, '');
+        
         const transporter = nodemailer.createTransport({
           service: 'gmail',
           auth: {
             user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASSWORD,
+            pass: cleanPassword,
           },
         });
+        
+        console.log('✅ Transporter created successfully');
 
         // Email to owner
         await transporter.sendMail({
@@ -206,18 +219,29 @@ module.exports = async (req, res) => {
 
         emailSent = true;
         console.log(`📧 Emails sent successfully to: ${email}`);
-      } catch (emailError) {
-        console.error('Email error:', emailError);
+      } catch (err) {
+        console.error('❌ Email error:', err);
+        console.error('Error details:', err.message);
+        emailError = err.message;
         // Don't fail - we still have the data
       }
+    } else {
+      console.log('⚠️ Email credentials not configured');
+      emailError = 'Email credentials missing';
     }
 
     // STEP 3: Return success
     return res.status(200).json({
       success: true,
-      message: 'Successfully joined the waitlist! Check your email for confirmation.',
+      message: emailSent 
+        ? 'Successfully joined the waitlist! Check your email for confirmation.'
+        : 'You\'re on the waitlist! (Note: Email notifications are being configured)',
       savedToDatabase,
       emailSent,
+      debug: {
+        emailConfigured: !!(process.env.EMAIL_USER && process.env.EMAIL_PASSWORD),
+        emailError: emailError || null
+      }
     });
 
   } catch (error) {
