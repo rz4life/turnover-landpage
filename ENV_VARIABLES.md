@@ -7,42 +7,52 @@ Go to: **Vercel Dashboard → Settings → Environment Variables**
 ---
 
 ### 1. EMAIL_USER
+
 ```
 razaqalagbada@gmail.com
 ```
+
 Environments: Production, Preview, Development ✅✅✅
 
 ---
 
 ### 2. EMAIL_PASSWORD
+
 ```
 aqblnyrrhxszhjlb
 ```
+
 ⚠️ **No spaces!** This is corrected from: `aqblnyrrh xszhj lb`
 Environments: Production, Preview, Development ✅✅✅
 
 ---
 
 ### 3. OWNER_EMAIL
+
 ```
 razaqalagbada@gmail.com
 ```
+
 Environments: Production, Preview, Development ✅✅✅
 
 ---
 
 ### 4. MONGODB_URI (Optional)
+
 ```
 mongodb+srv://razaqalagbada_db_user:FYUYatCdFyRonCXJ@runovercluster1.h7ntir2.mongodb.net/?appName=TrunoverCluster1
 ```
+
 Environments: Production, Preview, Development ✅✅✅
 
 ---
 
 ### 5. DB_NAME (Optional)
+
 ```
 turnover
 ```
+
 Environments: Production, Preview, Development ✅✅✅
 
 ---
@@ -63,7 +73,7 @@ For each variable above:
 **MUST DO:** Redeploy your site!
 
 1. Go to **Deployments** tab
-2. Click **three dots** (...) on latest deployment  
+2. Click **three dots** (...) on latest deployment
 3. Click **"Redeploy"**
 4. Wait 1-2 minutes
 
