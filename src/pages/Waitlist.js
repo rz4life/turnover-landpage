@@ -101,34 +101,38 @@ const Waitlist = () => {
         animate={{ y: 0, opacity: 1 }}
         className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/90 border-b border-gray-200 shadow-sm"
       >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
           {/* Logo */}
           <button 
             onClick={() => navigate('/')}
-            className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+            className="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-opacity"
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
-              <i className="fas fa-car text-white text-xl"></i>
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center shadow-lg flex-shrink-0">
+              <i className="fas fa-car text-white text-base sm:text-xl"></i>
             </div>
-            <div>
-              <div className="font-bold text-lg text-gray-900">TURNOVER MANAGER</div>
-              <div className="text-xs text-gray-500">Fleet Management Platform</div>
+            <div className="hidden sm:block">
+              <div className="font-bold text-base sm:text-lg text-gray-900 leading-tight">TURNOVER MANAGER</div>
+              <div className="text-xs text-gray-500 leading-none">Fleet Management Platform</div>
+            </div>
+            <div className="block sm:hidden">
+              <div className="font-bold text-sm text-gray-900 leading-tight">TURNOVER</div>
             </div>
           </button>
 
           {/* Back to Home */}
           <button
             onClick={() => navigate('/')}
-            className="px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors font-medium"
+            className="px-3 sm:px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors font-medium text-sm sm:text-base"
           >
-            <i className="fas fa-arrow-left mr-2"></i>
-            Back to Home
+            <i className="fas fa-arrow-left mr-1 sm:mr-2"></i>
+            <span className="hidden sm:inline">Back to Home</span>
+            <span className="inline sm:hidden">Back</span>
           </button>
         </div>
       </motion.nav>
 
       {/* Main Content */}
-      <div className="relative z-10 pt-32 pb-20 px-6">
+      <div className="relative z-10 pt-20 sm:pt-24 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6">
         <div className="max-w-2xl mx-auto">
           <AnimatePresence mode="wait">
             {!isSubmitted ? (
@@ -140,21 +144,21 @@ const Waitlist = () => {
                 transition={{ duration: 0.5 }}
               >
                 {/* Header */}
-                <div className="text-center mb-10">
+                <div className="text-center mb-8 sm:mb-10">
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ type: 'spring', stiffness: 200, delay: 0.2 }}
-                    className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 mb-6 shadow-2xl"
+                    className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 mb-4 sm:mb-6 shadow-2xl"
                   >
-                    <i className="fas fa-rocket text-white text-3xl"></i>
+                    <i className="fas fa-rocket text-white text-2xl sm:text-3xl"></i>
                   </motion.div>
                   
-                  <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">
                     Coming <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Soon!</span>
                   </h1>
                   
-                  <p className="text-xl text-gray-600 max-w-xl mx-auto">
+                  <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-xl mx-auto px-4">
                     We're putting the finishing touches on Turnover Manager. Join our waitlist to be the first to know when we launch!
                   </p>
                 </div>
