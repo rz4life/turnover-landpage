@@ -33,31 +33,34 @@ const HeroSection = () => {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="absolute top-0 left-0 right-0 z-50 px-6 py-6"
+        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/20 border-b border-white/10"
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
           {/* Logo */}
           <motion.div 
             whileHover={{ scale: 1.05 }}
-            className="flex items-center gap-3 cursor-pointer"
+            className="flex items-center gap-2 sm:gap-3 cursor-pointer"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
-              <i className="fas fa-car text-white text-xl"></i>
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg flex-shrink-0">
+              <i className="fas fa-car text-white text-base sm:text-xl"></i>
             </div>
-            <div>
-              <h1 className="text-xl font-bold text-white tracking-wider">TURNOVER MANAGER</h1>
-              <p className="text-xs text-gray-300">Fleet Management Platform</p>
+            <div className="hidden sm:block">
+              <h1 className="text-base sm:text-xl font-bold text-white tracking-wider leading-tight">TURNOVER MANAGER</h1>
+              <p className="text-xs text-gray-300 leading-none">Fleet Management Platform</p>
+            </div>
+            <div className="block sm:hidden">
+              <h1 className="text-sm font-bold text-white tracking-wider leading-tight">TURNOVER</h1>
             </div>
           </motion.div>
           
           {/* Quick Actions */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => navigate('/waitlist')}
-              className="px-6 py-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-full hover:bg-white/20 transition-colors text-sm font-medium"
+              className="hidden sm:block px-4 sm:px-6 py-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-full hover:bg-white/20 transition-colors text-sm font-medium"
             >
               Join Waitlist
             </motion.button>
@@ -65,9 +68,9 @@ const HeroSection = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => navigate('/waitlist')}
-              className="px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all text-sm font-medium"
+              className="px-4 sm:px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all text-xs sm:text-sm font-medium whitespace-nowrap"
             >
-              Get Started Free
+              Get Started
             </motion.button>
           </div>
         </div>
@@ -115,7 +118,7 @@ const HeroSection = () => {
 
       {/* Content */}
       <motion.div 
-        className="relative z-10 max-w-6xl mx-auto px-6 text-center pt-20"
+        className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 text-center pt-24 sm:pt-28 md:pt-32"
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
@@ -131,7 +134,7 @@ const HeroSection = () => {
         {/* Main Headline */}
         <motion.h1 
           variants={fadeInUp}
-          className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight"
         >
           Manage Your Turo Fleet
           <br />
@@ -143,7 +146,7 @@ const HeroSection = () => {
         {/* Subtitle */}
         <motion.p 
           variants={fadeInUp}
-          className="text-xl md:text-2xl text-gray-200 mb-4 max-w-3xl mx-auto"
+          className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 mb-3 sm:mb-4 max-w-3xl mx-auto px-4"
         >
           The all-in-one platform to track earnings, manage expenses, monitor vehicle health, 
           and collaborate seamlessly with your co-hosts.
@@ -152,7 +155,7 @@ const HeroSection = () => {
         {/* Personal Story */}
         <motion.p 
           variants={fadeInUp}
-          className="text-lg text-gray-300 mb-12 max-w-2xl mx-auto italic"
+          className="text-sm sm:text-base md:text-lg text-gray-300 mb-8 sm:mb-12 max-w-2xl mx-auto italic px-4"
         >
           "As a Turo host myself, I built this tool to solve the exact problems I faced managing 
           my fleet. Now I'm sharing it with the community to help others succeed."
@@ -198,19 +201,19 @@ const HeroSection = () => {
         {/* Stats */}
         <motion.div 
           variants={fadeInUp}
-          className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
+          className="mt-12 sm:mt-16 md:mt-20 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-4xl mx-auto"
         >
-          <div className="backdrop-blur-sm bg-white/10 rounded-2xl p-6 border border-white/20">
-            <div className="text-4xl font-bold text-white mb-2">50+</div>
-            <div className="text-gray-300">Beta Users</div>
+          <div className="backdrop-blur-sm bg-white/10 rounded-2xl p-4 sm:p-6 border border-white/20">
+            <div className="text-3xl sm:text-4xl font-bold text-white mb-1 sm:mb-2">50+</div>
+            <div className="text-sm sm:text-base text-gray-300">Beta Users</div>
           </div>
-          <div className="backdrop-blur-sm bg-white/10 rounded-2xl p-6 border border-white/20">
-            <div className="text-4xl font-bold text-white mb-2">$500K+</div>
-            <div className="text-gray-300">Revenue Tracked</div>
+          <div className="backdrop-blur-sm bg-white/10 rounded-2xl p-4 sm:p-6 border border-white/20">
+            <div className="text-3xl sm:text-4xl font-bold text-white mb-1 sm:mb-2">$500K+</div>
+            <div className="text-sm sm:text-base text-gray-300">Revenue Tracked</div>
           </div>
-          <div className="backdrop-blur-sm bg-white/10 rounded-2xl p-6 border border-white/20">
-            <div className="text-4xl font-bold text-white mb-2">10K+</div>
-            <div className="text-gray-300">Trips Managed</div>
+          <div className="backdrop-blur-sm bg-white/10 rounded-2xl p-4 sm:p-6 border border-white/20">
+            <div className="text-3xl sm:text-4xl font-bold text-white mb-1 sm:mb-2">10K+</div>
+            <div className="text-sm sm:text-base text-gray-300">Trips Managed</div>
           </div>
         </motion.div>
 

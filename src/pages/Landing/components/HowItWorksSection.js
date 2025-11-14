@@ -64,7 +64,7 @@ const HowItWorksSection = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   return (
-    <div id="how-it-works" className="py-24 px-6 bg-gradient-to-b from-white to-gray-50">
+    <div id="how-it-works" className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto">
         {/* Lightbox Modal */}
         <AnimatePresence>
