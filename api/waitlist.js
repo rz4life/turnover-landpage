@@ -33,10 +33,10 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const { email, isTuroHost, wouldUse, additionalInfo } = req.body;
+    const { email, isTuroHost, wouldUse, howDidYouHear, referralDetails, otherSource, additionalInfo } = req.body;
 
     // Validate required fields
-    if (!email || !isTuroHost || !wouldUse) {
+    if (!email || !isTuroHost || !wouldUse || !howDidYouHear) {
       return res.status(400).json({
         success: false,
         message: 'Please fill in all required fields'
@@ -78,6 +78,9 @@ module.exports = async (req, res) => {
           email: email.toLowerCase(),
           isTuroHost,
           wouldUse,
+          howDidYouHear,
+          referralDetails: referralDetails || '',
+          otherSource: otherSource || '',
           additionalInfo,
           emailSent: false,
           createdAt: new Date(),
@@ -145,6 +148,13 @@ module.exports = async (req, res) => {
                 <div style="margin-bottom: 15px;">
                   <strong style="color: #4F46E5;">Would they use Turnover Manager?</strong>
                   <p style="margin: 5px 0;">${wouldUse}</p>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                  <strong style="color: #4F46E5;">How did they hear about us?</strong>
+                  <p style="margin: 5px 0;">${howDidYouHear}</p>
+                  ${referralDetails ? `<p style="margin: 5px 0; padding-left: 20px; color: #6B7280;">↳ Referred by: ${referralDetails}</p>` : ''}
+                  ${otherSource ? `<p style="margin: 5px 0; padding-left: 20px; color: #6B7280;">↳ Details: ${otherSource}</p>` : ''}
                 </div>
 
                 ${additionalInfo ? `
