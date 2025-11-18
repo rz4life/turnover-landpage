@@ -8,6 +8,9 @@ const Waitlist = () => {
     email: '',
     isTuroHost: '',
     wouldUse: '',
+    howDidYouHear: '',
+    referralDetails: '',
+    otherSource: '',
     additionalInfo: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -46,6 +49,9 @@ const Waitlist = () => {
           email: '',
           isTuroHost: '',
           wouldUse: '',
+          howDidYouHear: '',
+          referralDetails: '',
+          otherSource: '',
           additionalInfo: ''
         });
       } else {
@@ -248,6 +254,98 @@ const Waitlist = () => {
                       </div>
                     </div>
 
+                    {/* How did you hear about us? */}
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        How did you hear about us? *
+                      </label>
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                          <i className="fas fa-bullhorn text-gray-400"></i>
+                        </div>
+                        <select
+                          name="howDidYouHear"
+                          value={formData.howDidYouHear}
+                          onChange={handleChange}
+                          required
+                          className="w-full pl-12 pr-10 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none appearance-none bg-white cursor-pointer"
+                        >
+                          <option value="">Select an option</option>
+                          <option value="Friend/Referral">Friend/Referral</option>
+                          <option value="LinkedIn">LinkedIn</option>
+                          <option value="Instagram Ads">Instagram Ads</option>
+                          <option value="TikTok Ads">TikTok Ads</option>
+                          <option value="Google Ads">Google Ads</option>
+                          <option value="Facebook Ads">Facebook Ads</option>
+                          <option value="YouTube">YouTube</option>
+                          <option value="Twitter/X">Twitter/X</option>
+                          <option value="Reddit">Reddit</option>
+                          <option value="Turo Community/Forum">Turo Community/Forum</option>
+                          <option value="Blog/Article">Blog/Article</option>
+                          <option value="Podcast">Podcast</option>
+                          <option value="Google Search">Google Search</option>
+                          <option value="Other">Other</option>
+                        </select>
+                        <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
+                          <i className="fas fa-chevron-down text-gray-400"></i>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Referral Details (shown only if Friend/Referral is selected) */}
+                    {formData.howDidYouHear === 'Friend/Referral' && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                          Who referred you? (Name or Email)
+                        </label>
+                        <div className="relative">
+                          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i className="fas fa-user-friends text-gray-400"></i>
+                          </div>
+                          <input
+                            type="text"
+                            name="referralDetails"
+                            value={formData.referralDetails}
+                            onChange={handleChange}
+                            className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none"
+                            placeholder="Friend's name or email"
+                          />
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {/* Other Source Details (shown only if Other is selected) */}
+                    {formData.howDidYouHear === 'Other' && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                          Please specify where you heard about us
+                        </label>
+                        <div className="relative">
+                          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i className="fas fa-edit text-gray-400"></i>
+                          </div>
+                          <input
+                            type="text"
+                            name="otherSource"
+                            value={formData.otherSource}
+                            onChange={handleChange}
+                            className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none"
+                            placeholder="e.g., Email newsletter, conference, etc."
+                          />
+                        </div>
+                      </motion.div>
+                    )}
+
                     {/* Additional Info */}
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -365,6 +463,9 @@ const Waitlist = () => {
                         email: '',
                         isTuroHost: '',
                         wouldUse: '',
+                        howDidYouHear: '',
+                        referralDetails: '',
+                        otherSource: '',
                         additionalInfo: ''
                       });
                     }}
