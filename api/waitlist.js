@@ -101,19 +101,19 @@ module.exports = async (req, res) => {
     
     // Debug logging
     console.log('🔍 Email Config Check:');
-    console.log('EMAIL_USER exists:', !!process.env.EMAIL_USER);
-    console.log('EMAIL_PASSWORD exists:', !!process.env.EMAIL_PASSWORD);
-    console.log('EMAIL_USER value:', process.env.EMAIL_USER);
+    console.log('GMAIL_USER exists:', !!process.env.GMAIL_USER);
+    console.log('GMAIL_APP_PASSWORD exists:', !!process.env.GMAIL_APP_PASSWORD);
+    console.log('GMAIL_USER value:', process.env.GMAIL_USER);
     
-    if (process.env.EMAIL_USER && process.env.EMAIL_PASSWORD) {
+    if (process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD) {
       try {
         // Remove spaces from password (common issue with Gmail app passwords)
-        const cleanPassword = process.env.EMAIL_PASSWORD.replace(/\s+/g, '');
+        const cleanPassword = process.env.GMAIL_APP_PASSWORD.replace(/\s+/g, '');
         
         const transporter = nodemailer.createTransport({
           service: 'gmail',
           auth: {
-            user: process.env.EMAIL_USER,
+            user: process.env.GMAIL_USER,
             pass: cleanPassword,
           },
         });
@@ -122,9 +122,9 @@ module.exports = async (req, res) => {
 
         // Email to owner
         await transporter.sendMail({
-          from: `"Turnover Manager" <${process.env.EMAIL_USER}>`,
-          replyTo: process.env.OWNER_EMAIL || process.env.EMAIL_USER,
-          to: process.env.OWNER_EMAIL || process.env.EMAIL_USER,
+          from: `"Turnover Manager" <${process.env.FROM_EMAIL || process.env.GMAIL_USER}>`,
+          replyTo: process.env.FROM_EMAIL || process.env.GMAIL_USER,
+          to: process.env.GMAIL_USER,
           subject: `🎯 New Waitlist Signup - ${email}`,
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -181,8 +181,8 @@ module.exports = async (req, res) => {
 
         // Confirmation email to user
         await transporter.sendMail({
-          from: `"Turnover Manager" <contact@turnover-manager.com>`,
-          replyTo: process.env.OWNER_EMAIL || process.env.EMAIL_USER,
+          from: `"Turnover Manager Team" <${process.env.FROM_EMAIL || process.env.GMAIL_USER}>`,
+          replyTo: process.env.FROM_EMAIL || process.env.GMAIL_USER,
           to: email,
           subject: '🚀 Welcome to the Turnover Manager Waitlist!',
           html: `
@@ -249,7 +249,7 @@ module.exports = async (req, res) => {
       savedToDatabase,
       emailSent,
       debug: {
-        emailConfigured: !!(process.env.EMAIL_USER && process.env.EMAIL_PASSWORD),
+        emailConfigured: !!(process.env.GMAIL_USER && process.env.GMAIL_APP_PASSWORD),
         emailError: emailError || null
       }
     });
